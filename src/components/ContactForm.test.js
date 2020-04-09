@@ -28,6 +28,7 @@ test ('inputs are in the document',()=>{
 })
 
 test('form submits displays user data below',()=>{
+    //Arrange
     const {getByLabelText} = render (<ContactForm />)
 
     const firstInput = getByLabelText(/first name/i);
@@ -35,10 +36,17 @@ test('form submits displays user data below',()=>{
     const emailForm = getByLabelText(/email/i);
     const messageForm =getByLabelText(/message/i); 
 
+    //Act
     fireEvent.change(firstInput, {target:{name: 'firstName', value: 'Lily'}})
     fireEvent.change(lastInput,{target: {name: 'lastName', value: 'White' }})
     fireEvent.change(emailForm, {target: {name: 'email', value:'lilywhite@gmail.com'}})
     fireEvent.change(messageForm,{target:{name: 'message', value: 'notes'}})
+
+    //Assert
+    expect(firstInput.value).toBe('Lily');
+    expect(lastInput.value).toBe('White');
+    expect(emailForm.value).toBe('lilywhite@gmail.com');
+    expect(messageForm.value).toBe('notes');
 
 });
 
