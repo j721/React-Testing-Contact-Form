@@ -2,20 +2,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
-  const [data, setData] = useState({
-    roles: ""
-  });
+  const [data, setData] = useState();
   const { register, errors, handleSubmit, reset } = useForm({
     mode: "onBlur"
   });
   const onSubmit = data => {
     setData(data);
   };
-
-  const inputChange = e => {
-    e.persist();
-    const newFormData = {
-      ...formState,
 
   return (
     <div className="App">
@@ -64,7 +57,7 @@ const ContactForm = () => {
             {JSON.stringify(data, null, 2)}
           </pre>
         )}
-        <label htmlFor="Roles">
+        {/* <label htmlFor="Roles">
         Roles
         <select id="roles" name="roles" onChange={inputChange} >
           <option value="UX designer">UX designer</option>
@@ -72,7 +65,7 @@ const ContactForm = () => {
           <option value="Data Scientist">Administrative Work</option>
           <option value="Web Devloper">Tabling</option>
         </select>
-      </label>
+      </label> */}
         <input type="submit" />
       </form>
     </div>
